@@ -3,6 +3,7 @@ package com.financial.management.service;
 import com.financial.management.domain.model.Category;
 import com.financial.management.dto.request.CategoryRequest;
 import com.financial.management.dto.response.CategoryResponse;
+import com.financial.management.exception.DuplicateResourceException;
 import com.financial.management.repository.CategoryRepository;
 import com.financial.management.utilities.TextUtils;
 import jakarta.persistence.EntityNotFoundException;
@@ -10,7 +11,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
-import java.util.Optional;
 
 @Service
 public class CategoryService {
@@ -18,14 +18,14 @@ public class CategoryService {
     @Autowired
     private CategoryRepository repository;
 
-    public CategoryResponse createCategory(CategoryRequest categoryRequest) {
+    public CategoryResponse create(CategoryRequest categoryRequest) {
 
         Category categoryEntity = new Category();
 
         String normalizedName = TextUtils.normalize(categoryRequest.getName());
 
-        if (repository.existsByNormalizedName(normalizedName)){
-            throw new RuntimeException("Nome já existe.");
+        if (repository.existsByNormalizedName(normalizedName)) {
+            throw new DuplicateResourceException("Nome já existe.");
         }
 
         categoryEntity.setName(categoryRequest.getName().trim());
@@ -44,20 +44,22 @@ public class CategoryService {
                 .toList();
     }
 
-    public CategoryResponse findById(Long id) {
-        Category category = repository.findById(id)
-                .orElseThrow(() -> new RuntimeException("Categoria não encontrada!"));
-        return toResponse(category);
-    }
-
-    public CategoryResponse updateCategory(Long id, CategoryRequest request) {
+    public CategoryResponse update(Long id, CategoryRequest request) {
         Category category = repository.findById(id)
                 .orElseThrow(() -> new RuntimeException("Categoria não encontrada"));
 
-        if (request.getName().isEmpty()){
+        String normalizedName = TextUtils.normalize(request.getName());
+
+        if (request.getName().isEmpty() || request.getName().equals(category.getName())){
             category.setCategoryType(request.getCategoryType());
         } else {
+
+            if (repository.existsByNormalizedName(normalizedName)) {
+                throw new DuplicateResourceException("Nome já existe.");
+            }
+
             category.setName(request.getName());
+            category.setNormalizedName(normalizedName);
             category.setCategoryType(request.getCategoryType());
         }
 
@@ -66,12 +68,9 @@ public class CategoryService {
         return toResponse(category);
     }
 
-    public String deleteCategory(Long id) {
+    public void delete(Long id) {
         if (repository.existsById(id)) {
-            Optional<Category> category = repository.findById(id);
-            String categoryName = category.get().getName();
             repository.deleteById(id);
-            return categoryName;
         } else {
             throw new EntityNotFoundException("Categoria não encontrada!");
         }
@@ -79,6 +78,7 @@ public class CategoryService {
 
     private CategoryResponse toResponse(Category category) {
         CategoryResponse response = new CategoryResponse();
+        response.setId(category.getCategoryId());
         response.setName(category.getName());
         response.setCategoryType(category.getCategoryType());
         return response;

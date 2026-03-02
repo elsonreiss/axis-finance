@@ -4,9 +4,9 @@ import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 @SpringBootApplication
-public class FinancasApplication {
+public class AxisFinanceApplication {
 
 	public static void main(String[] args) {
-		SpringApplication.run(FinancasApplication.class, args);
+		SpringApplication.run(AxisFinanceApplication.class, args);
 	}
 }
