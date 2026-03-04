@@ -1,5 +1,7 @@
 package com.financial.management.domain.enums;
 
+import com.fasterxml.jackson.annotation.JsonCreator;
+
 public enum CategoryType {
 
     RECEITA(1),
@@ -15,12 +17,14 @@ public enum CategoryType {
         return categoryTypeCode;
     }
 
-    public static CategoryType valueOf(Integer code){
-        for (CategoryType value : CategoryType.values()){
-            if (value.getCategoryTypeCode() == code){
+    @JsonCreator
+    public static CategoryType fromValue(Integer code) {
+        for (CategoryType value : CategoryType.values()) {
+            if (value.categoryTypeCode.equals(code)) {
                 return value;
             }
         }
-        throw new IllegalArgumentException("Invalid category type code");
+        throw new IllegalArgumentException("Invalid category type code: " + code);
     }
+
 }

@@ -1,4 +1,4 @@
-package com.financial.management.domain;
+package com.financial.management.domain.model;
 
 import jakarta.persistence.*;
 import lombok.Getter;
@@ -7,14 +7,14 @@ import lombok.Setter;
 import java.time.LocalDateTime;
 
 @Entity
-@Table(name = "tb_revenue")
+@Table(name = "tb_expense")
 @Getter
 @Setter
-public class Revenue {
+public class Expense {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long revenueId;
+    private Long expenseId;
 
     @Column(nullable = false)
     private String description;

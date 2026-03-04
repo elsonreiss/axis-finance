@@ -1,4 +1,4 @@
-package com.financial.management.domain;
+package com.financial.management.domain.model;
 
 import com.financial.management.domain.enums.CategoryType;
 import jakarta.persistence.*;
@@ -17,6 +17,9 @@ public class Category {
 
     @Column(nullable = false)
     private String name;
+
+    @Column(nullable = false, unique = true)
+    private String normalizedName;
 
     @Enumerated(EnumType.STRING)
     @Column(nullable = false)

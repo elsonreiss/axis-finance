@@ -1,6 +1,6 @@
 package com.financial.management.dto.response;
 
-import com.financial.management.domain.Category;
+import com.financial.management.domain.model.Category;
 import lombok.Getter;
 import lombok.Setter;
 
@@ -9,7 +9,7 @@ import lombok.Setter;
 public class RevenueResponse {
 
     private String description;
-    private Double value;
+    private Double amount;
     private Category category;
 
 }
