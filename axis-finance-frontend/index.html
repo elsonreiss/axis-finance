@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="icon" href="images/favicon.png" type="image/jpg">
+  <link rel="stylesheet" href="/css/style.css">
+  <script src="js/main.js" defer></script>
+  <title>Sistema Financeiro</title>
+</head>
+
+<body>
+
+  <div class="left">
+
+    <div>
+      <h4 class="title">Gestão Financeira</h4>
+    </div>
+
+    <nav>
+      <ul>
+        <li><a href="/pages/category.html">Categorias</a></li>
+        <li><a href="/pages/revenue.html">Receitas</a></li>
+        <li><a href="/pages/expense.html">Despesas</a></li>
+      </ul>
+    </nav>
+
+  </div>
+
+  <div class="right">
+
+    <div class="welcome">
+      <h2>Visão geral do seu sistema financeiro</h2>
+    </div>
+
+    <div class="cards">
+
+      <div class="card">
+        <div class="card-header">
+          <span>Categorias</span>
+          <div class="icon icon-neutral">📁</div>
+        </div>
+        <h3 id="categoryQuantity"></h3>
+        <p>cadastradas</p>
+      </div>
+
+      <div class="card">
+        <div class="card-header">
+          <span>Receitas</span>
+          <div class="icon icon-green">📈</div>
+        </div>
+
+        <div class="card-body-split">
+          <div class="card-info">
+            <h3 id="revenueQuantity"></h3>
+            <p>cadastradas</p>
+          </div>
+
+          <div class="card-info">
+            <h3 id="revenueAmount"></h3>
+            <p>valor total</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="card">
+        <div class="card-header">
+          <span>Despesas</span>
+          <div class="icon icon-red">📉</div>
+        </div>
+
+        <div class="card-body-split">
+          <div class="card-info">
+            <h3 id="expenseQuantity"></h3>
+            <p>cadastradas</p>
+          </div>
+
+          <div class="card-info">
+            <h3 id="expenseAmount"></h3>
+            <p>valor total</p>
+          </div>
+        </div>
+      </div>
+
+    </div>
+
+  </div>
+
+</body>
+
+</html>

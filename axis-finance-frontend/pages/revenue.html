@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="../css/style.css">
+  <link rel="icon" href="../images/favicon.png" type="image/jpg">
+  <script src="../js/revenue.js" defer></script>
+  <title>Sistema Financeiro</title>
+</head>
+
+<body>
+
+  <div class="left">
+
+    <div>
+      <h4 class="title"><a class="return" href="../index.html">Gestão Financeira</a></h4>
+    </div>
+
+    <nav>
+      <ul>
+        <li><a href="category.html">Categorias</a></li>
+        <li><a>Receitas</a></li>
+        <li><a href="expense.html">Despesas</a></li>
+      </ul>
+    </nav>
+
+  </div>
+
+  <div class="right">
+
+    <div class="welcome">
+
+      <h2>Receitas</h2>
+
+      <div class="category-form">
+        <form id="revenueForm">
+          <div class="form-group">
+            <label>Descrição</label>
+            <input type="text" class="revenueDescription" name="description" required>
+          </div>
+
+          <div class="form-group">
+            <label>Valor</label>
+            <input type="number" class="revenueAmount" name="amount" step="0.01" min="0" required>
+          </div>
+
+          <div class="form-group">
+            <label>Categoria</label>
+            <select class="revenueCategory" name="category" required>
+              <option value="">Selecione uma categoria</option>
+            </select>
+          </div>
+
+          <button type="submit" id="submitBtn">Cadastrar</button>
+          <button type="button" id="cancelBtn" hidden>Cancelar</button>
+        </form>
+      </div>
+
+      <div class="category-list">
+        <table>
+          <thead>
+            <tr>
+              <th>Descrição</th>
+              <th>Valor</th>
+              <th>Categoria</th>
+              <th>Ações</th>
+            </tr>
+          </thead>
+          <tbody id="revenueTableBody">
+            <!-- JS vai inserir aqui -->
+          </tbody>
+        </table>
+      </div>
+
+    </div>
+
+  </div>
+
+</body>
+
+</html>
