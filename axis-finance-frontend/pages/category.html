@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="../css/style.css">
+  <link rel="icon" href="../images/favicon.png" type="image/jpg">
+  <script src="../js/category.js" defer></script>
+  <title>Sistema Financeiro</title>
+</head>
+
+<body>
+
+  <div class="left">
+
+    <div>
+      <h4 class="title"><a class="return" href="../index.html">Gestão Financeira</a></h4>
+    </div>
+
+    <nav>
+      <ul>
+        <li><a>Categorias</a></li>
+        <li><a href="revenue.html">Receitas</a></li>
+        <li><a href="expense.html">Despesas</a></li>
+      </ul>
+    </nav>
+
+  </div>
+
+  <div class="right">
+
+    <div class="welcome">
+
+      <h2>Categorias</h2>
+
+      <div class="category-form">
+        <form id="categoryForm">
+          <div class="form-group">
+            <label>Nome da categoria</label>
+            <input type="text" class="categoryName" name="name" required>
+          </div>
+
+          <div class="form-group">
+            <label>Tipo</label>
+            <select name="type" class="categoryType">
+              <option value=1>Receita</option>
+              <option value=2>Despesa</option>
+            </select>
+          </div>
+
+          <button type="submit" id="submitBtn">Cadastrar</button>
+          <button type="button" id="cancelBtn" hidden>Cancelar</button>
+        </form>
+      </div>
+
+      <div class="category-list">
+        <table>
+          <thead>
+            <tr>
+              <th>Nome</th>
+              <th>Tipo</th>
+              <th>Ações</th>
+            </tr>
+          </thead>
+          <tbody id="categoryTableBody">
+            <!-- JS vai inserir aqui -->
+          </tbody>
+        </table>
+      </div>
+
+    </div>
+
+  </div>
+
+</body>
+
+</html>
